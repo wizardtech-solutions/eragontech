@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>EragonTech - Soluções em Tecnologia, Administração e Programação</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        /* Header e Navegação */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--primary);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Sobre */
+        .about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Contato */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Páginas de Política e Termos */
+        .page-content {
+            padding: 150px 0 80px;
+            min-height: 100vh;
+        }
+
+        .page-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .page-content h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .page-content ul,
+        .page-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .page-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 80%;
+                height: calc(100vh - 80px);
+                padding: 40px 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 0 0 20px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Seção de Projetos */
+        .projects {
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(231, 76, 60, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .projects .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .project-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-feature {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .project-link i {
+            margin-right: 5px;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        .projects-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* Animações para os cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .project-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .project-link {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Eragon<span>Tech</span></h1>
+            </div>
+            <div
+                class="hamburger"
+                id="hamburger"
+            >
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul
+                class="nav-menu"
+                id="nav-menu"
+            >
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="privacy-policy">Política de Privacidade</a></li>
+                <li><a href="terms">Termos de Uso</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+        class="hero"
+        id="home"
+    >
+        <div class="container">
+            <h1>Soluções Tecnológicas para o Futuro</h1>
+            <p>A EragonTech é uma empresa especializada em tecnologia, administração e programação, oferecendo soluções
+                inovadoras para impulsionar o seu negócio.</p>
+            <div class="hero-buttons">
+                <a
+                    href="#services"
+                    class="btn"
+                >Nossos Serviços</a>
+                <a
+                    href="#contact"
+                    class="btn btn-secondary"
+                >Entre em Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section
+        class="about"
+        id="about"
+    >
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre a EragonTech</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Inovação e Excelência em Tecnologia</h3>
+                    <p>A EragonTech foi fundada com a missão de transformar empresas através da tecnologia. Combinamos
+                        expertise técnica com visão estratégica para oferecer soluções personalizadas que atendem às
+                        necessidades específicas de cada cliente.</p>
+                    <p>Nossa equipe é composta por profissionais altamente qualificados nas áreas de tecnologia,
+                        administração e programação, trabalhando em conjunto para desenvolver projetos que impulsionam o
+                        crescimento e a eficiência dos negócios.</p>
+                    <p>Acreditamos que a tecnologia deve ser acessível e aplicável, por isso nos dedicamos a criar
+                        soluções que são tanto inovadoras quanto práticas, sempre com foco nos resultados.</p>
+                    <a
+                        href="#contact"
+                        class="btn"
+                    >Saiba Mais</a>
+                </div>
+                <div class="about-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="Equipe EragonTech"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section
+        class="services"
+        id="services"
+    >
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções completas para impulsionar sua empresa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Desenvolvimento de Software</h3>
+                    <p>Criamos aplicações web e mobile personalizadas, sistemas de gestão e soluções de software sob
+                        medida para atender às necessidades específicas do seu negócio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Consultoria em TI</h3>
+                    <p>Oferecemos assessoria especializada para ajudar sua empresa a implementar as melhores práticas de
+                        tecnologia, otimizar processos e aumentar a produtividade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Gestão de Dados</h3>
+                    <p>Desenvolvemos sistemas de banco de dados eficientes, implementamos soluções de Business
+                        Intelligence e garantimos a segurança e integridade das suas informações.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Serviços em Nuvem</h3>
+                    <p>Implementamos e gerenciamos infraestruturas em nuvem, garantindo escalabilidade, segurança e
+                        redução de custos para sua empresa.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança da Informação</h3>
+                    <p>Protegemos seus dados e sistemas com soluções avançadas de segurança, incluindo firewalls,
+                        criptografia e políticas de acesso.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Gestão Administrativa</h3>
+                    <p>Oferecemos soluções de gestão empresarial, otimização de processos administrativos e
+                        implementação de metodologias ágeis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Projetos -->
+    <section
+        class="projects"
+        id="projects"
+    >
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Projetos</h2>
+                <p>Conheça algumas das soluções inovadoras que desenvolvemos para nossos clientes</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Projeto 1: Vitah -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
+                            alt="Vitah - Telemedicina"
+                        >
+                        <div class="project-badge">Em Destaque</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-stethoscope project-icon"></i>
+                            Vitah
+                        </h3>
+                        <p class="project-description">
+                            Plataforma completa de telemedicina que conecta pacientes e médicos através de consultas
+                            online e videochamadas. Sistema com agendamento, prontuário eletrônico, prescrições digitais
+                            e integração com planos de saúde.
+                        </p>
+                        <div class="project-features">
+                            <span class="project-feature">Web App</span>
+                            <span class="project-feature">Mobile</span>
+                            <span class="project-feature">Servidor</span>
+                            <span class="project-feature">Videochamadas</span>
+                            <span class="project-feature">Prontuário Eletrônico</span>
+                        </div>
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                            </a>
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-info-circle"></i> Detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2: Rastreamento -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80"
+                            alt="App de Rastreamento"
+                        >
+                        <div class="project-badge">Lançamento</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-map-marker-alt project-icon"></i>
+                            TrackPlus
+                        </h3>
+                        <p class="project-description">
+                            Aplicativo de rastreamento em tempo real para frotas, entregas e pessoas. Oferece
+                            geolocalização precisa, histórico de rotas, alertas personalizados e relatórios detalhados
+                            de desempenho.
+                        </p>
+                        <div class="project-features">
+                            <span class="project-feature">Mobile</span>
+                            <span class="project-feature">GPS</span>
+                            <span class="project-feature">Tempo Real</span>
+                            <span class="project-feature">Relatórios</span>
+                            <span class="project-feature">Notificações</span>
+                        </div>
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fab fa-google-play"></i> Play Store
+                            </a>
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fab fa-apple"></i> App Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3: Gestão de Vendas Simples -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Gestão de Vendas Simples"
+                        >
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-cash-register project-icon"></i>
+                            VendaFácil
+                        </h3>
+                        <p class="project-description">
+                            Sistema de gestão de vendas simplificado para pequenos negócios. Controle de estoque,
+                            emissão de notas fiscais, relatórios básicos e integração com maquininhas de cartão.
+                        </p>
+                        <div class="project-features">
+                            <span class="project-feature">Web App</span>
+                            <span class="project-feature">Mobile</span>
+                            <span class="project-feature">PDV</span>
+                            <span class="project-feature">Estoque</span>
+                            <span class="project-feature">Relatórios</span>
+                        </div>
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-external-link-alt"></i> Acessar
+                            </a>
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-mobile-alt"></i> App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 4: Gestão de Vendas Completo -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+                            alt="Gestão de Vendas Completo"
+                        >
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-chart-line project-icon"></i>
+                            BusinessPro
+                        </h3>
+                        <p class="project-description">
+                            Sistema completo de gestão empresarial com CRM avançado, controle financeiro, gestão de
+                            estoque, automação de marketing e Business Intelligence integrado.
+                        </p>
+                        <div class="project-features">
+                            <span class="project-feature">ERP</span>
+                            <span class="project-feature">CRM</span>
+                            <span class="project-feature">BI</span>
+                            <span class="project-feature">Automação</span>
+                            <span class="project-feature">Multi-plataforma</span>
+                        </div>
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-file-contract"></i> Proposta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 5: Campanhas Eleitorais -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                            alt="Gestão de Campanhas Eleitorais"
+                        >
+                        <div class="project-badge">Especializado</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-vote-yea project-icon"></i>
+                            Eleição+
+                        </h3>
+                        <p class="project-description">
+                            Plataforma web para gestão completa de campanhas eleitorais. Controle de eleitores,
+                            agendamento de visitas, gestão de voluntários, acompanhamento de métricas e relatórios de
+                            desempenho.
+                        </p>
+                        <div class="project-features">
+                            <span class="project-feature">Web App</span>
+                            <span class="project-feature">CRM Eleitoral</span>
+                            <span class="project-feature">Relatórios</span>
+                            <span class="project-feature">Mobile</span>
+                            <span class="project-feature">Segurança</span>
+                        </div>
+                        <div class="project-links">
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-external-link-alt"></i> Conhecer
+                            </a>
+                            <a
+                                href="#"
+                                class="project-link"
+                            >
+                                <i class="fas fa-shield-alt"></i> Segurança
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-cta">
+                <a
+                    href="#contact"
+                    class="btn"
+                >Quero um Projeto Similar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section
+        class="contact"
+        id="contact"
+    >
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para ajudar a transformar sua empresa</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Rua Bento Rêgo, - Esperantina, PI</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(86) 9 9852-1856</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>erosravier.15@eragontech.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sexta: 8h às 18h</p>
+                            <p>Sábado: 9h às 13h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input
+                                type="text"
+                                id="name"
+                                class="form-control"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input
+                                type="text"
+                                id="subject"
+                                class="form-control"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea
+                                id="message"
+                                class="form-control"
+                                required
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn"
+                        >Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EragonTech</h3>
+                    <p>Transformando empresas através da tecnologia, administração e programação com soluções inovadoras
+                        e personalizadas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Desenvolvimento de Software</a></li>
+                        <li><a href="#">Consultoria em TI</a></li>
+                        <li><a href="#">Gestão de Dados</a></li>
+                        <li><a href="#">Serviços em Nuvem</a></li>
+                        <li><a href="#">Segurança da Informação</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy-policy">Política de Privacidade</a></li>
+                        <li><a href="/terms">Termos de Uso</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 EragonTech. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
